@@ -24,8 +24,6 @@ export default function Calendar(props: CalendarProps) {
         setActiveId(event.active.id);
     }
 
-    
-
     const currentClass = (
         <Draggable id={props.classes[0].classData.object_id} children={
             <ClassDisplay classData={props.classes[0].classData} classProperties={props.classes[0].classProperties} />
@@ -44,7 +42,7 @@ export default function Calendar(props: CalendarProps) {
                 <div className="flex flex-col w-full max-h-[82vh] mr-10">
                     <div className="flex flex-row">
                         <div className="w-full grid grid-cols-[0.3fr,repeat(5,1fr)] bg-white border-y border-l border-gray">
-                            <div className="bg-white p-3 border border-gray shadow">
+                            <div className="bg-white p-3 border border-gray shadow min-w-12">
                                 <div className=""></div>
                             </div>
 
@@ -70,16 +68,19 @@ export default function Calendar(props: CalendarProps) {
                         </div >
                         <div className="w-[12px] bg-white border-y-2 border-r-2 border-gray shadow-b shadow-r"></div>
                     </div>
-                    
+
                     {/*scrolling frame, removed options: */}
-                    <div className="grid grid-cols-[0.3fr,repeat(5,1fr)] bg-white border border-gray overflow-y-scroll scrollbar-webkit scrollbar-thin rounded-b-3xl">
+                    <div className="bg-white border border-gray overflow-y-scroll scrollbar-webkit scrollbar-thin rounded-b-3xl">
                         <DndContext id="scrolling_context" onDragStart={handleDragStart} onDragEnd={handleDragEnd}>
-                            <TimeDisplay />
-                            <TimeOfDay day="Mon" />
-                            <TimeOfDay day="Tue" />
-                            <TimeOfDay day="Wed" />
-                            <TimeOfDay day="Thu" />
-                            <TimeOfDay day="Fri" />
+                            <div className='grid grid-cols-[0.3fr,repeat(5,1fr)] '>
+                                <TimeDisplay />
+                                <TimeOfDay day="Mon" />
+                                <TimeOfDay day="Tue" />
+                                <TimeOfDay day="Wed" />
+                                <TimeOfDay day="Thu" />
+                                <TimeOfDay day="Fri" />
+                            </div>
+
                             {currentClass}
                         </DndContext>
                         <DragOverlay>

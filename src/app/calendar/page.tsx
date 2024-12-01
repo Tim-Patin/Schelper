@@ -22,9 +22,17 @@ const CalendarPage = () => {
     }, [classLoading]);
 
     if (classLoading) {
-        return (<div className='flex flex-col'>
-            <Calendar classes={combinedClasses}/>
-        </div>);
+        return (
+            <div className="flex flex-col items-center">
+                <h1 className='text-bold text-3xl pt-10'>Loading Calendar ...</h1>
+            </div>
+        );
+    } else {
+        return (
+            <div className=''>
+                <Calendar classes={combinedClasses} />
+            </div>
+        );
     }
 }
 
